@@ -15,6 +15,8 @@ public class Renderer {
     private static GLWindow window = null;
     private static GLProfile profile = null;
 
+    public static int tileSize = 15;
+
     public static void init() {
         GLProfile.initSingleton();
         profile = GLProfile.get(GLProfile.GL2);
@@ -28,30 +30,36 @@ public class Renderer {
 
         window.addGLEventListener(new EventListenerImpl());
 
-        ///////////////////
-        FPSAnimator animator = new FPSAnimator(window, 60);     //60fps
+//
+//        window.addWindowListener(new WindowAdapter() {
+//            @Override
+//            public void windowDestroyNotify(WindowEvent windowEvent) {
+//                if(animator.isAnimating())
+//                    animator.stop();
+//                System.exit(0);
+//            }
+//        });
+//
 
-        window.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowDestroyNotify(WindowEvent windowEvent) {
-                if(animator.isAnimating())
-                    animator.stop();
-                System.exit(0);
-            }
-        });
-
-        //////////////
-        animator.start();           //start the rendering loop
         window.setVisible(true);
 
+    }
 
+    public static void render() {
+        if(window != null)
+            window.display();
     }
 
     public static GLProfile getProfile() {
         return profile;
     }
 
-    public static void main(String[] args) {
-        init();
+    public static int getWindowWidth () {
+        return window.getWidth();
     }
+
+    public static int getWindowHeight () {
+        return window.getHeight();
+    }
+
 }

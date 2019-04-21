@@ -13,22 +13,43 @@ import java.io.IOException;
  */
 public class ImageResource {
 
-    private static Texture texture = null;
-    private static BufferedImage image = null;
+    private Texture texture = null;
+    private BufferedImage image = null;
+
+    public ImageResource() {
+
+    }
 
     public ImageResource(String path) {
+        setImage(path);
+    }
+
+    public Texture getTexture() {
+        if(texture == null) {
+            texture = AWTTextureIO.newTexture(Renderer.getProfile(), image, true);
+        }
+        return texture;
+    }
+
+    public void setTexture(Texture texture) {
+        this.texture = texture;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public ImageResource setImage(BufferedImage image) {
+        this.image = image;
+        return this;
+    }
+
+    public void setImage(String path) {
         try {
             image = ImageIO.read(ImageResource.class.getResource(path));
             image.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    private static Texture getTexture() {
-        if(texture == null) {
-            texture = AWTTextureIO.newTexture(Renderer.getProfile(), image, true);
-        }
-        return texture;
     }
 }
