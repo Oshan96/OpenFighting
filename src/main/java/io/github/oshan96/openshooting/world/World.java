@@ -1,11 +1,8 @@
 package io.github.oshan96.openshooting.world;
 
-import com.jogamp.opengl.GL2;
-import com.jogamp.opengl.util.texture.Texture;
-import io.github.oshan96.openshooting.graphics.EventListenerImpl;
-import io.github.oshan96.openshooting.graphics.Graphics;
-import io.github.oshan96.openshooting.resources.SpriteSheet;
+import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,21 +10,24 @@ import java.util.List;
  */
 public class World {
 
-    static List<Texture> sprites = null;
-    static GL2 gl = EventListenerImpl.gl;
+    private static List<BasicGameObject> gameObjects = null;
 
     static {
-        sprites = SpriteSheet.getInstance().loadSpriteSheet("/images/sprites/kree.png").getSprites(64,64);
+        gameObjects = new ArrayList<>();
     }
 
     public static void update() {
-//        System.out.println("Update");
+        for(BasicGameObject object : gameObjects)
+            object.update();
+
     }
 
     public static void render() {
-//        System.out.println("Rendering");
+        for(BasicGameObject object : gameObjects)
+            object.render();
+    }
 
-        Graphics.createObjectTexture(sprites.get(0),0,0,1,1);
-
+    public static void addGameObject(BasicGameObject gameObject) {
+        gameObjects.add(gameObject);
     }
 }

@@ -35,15 +35,12 @@ public class SpriteSheet {
         List<Texture> images = new ArrayList<>();
         int rows = 6;
         int cols = 18;
-
-        System.out.println("rows : "+rows);
-        System.out.println("cols : "+cols);
-
         int x=0, y=0;
 
         for(int i=0; i<rows; i++) {
             for(int j=0; j<cols; j++) {
                 BufferedImage image1 = image.getSubimage(x,y,spriteWidth,spriteHeight);
+                image1.flush();
                 imageResource.setImage(image1);
                 images.add(imageResource.getTexture());
                 x+=spriteWidth;
@@ -51,7 +48,6 @@ public class SpriteSheet {
             x=0;
             y+=spriteHeight;
         }
-
 
         return images;
     }

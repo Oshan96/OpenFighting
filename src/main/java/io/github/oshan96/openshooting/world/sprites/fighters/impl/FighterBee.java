@@ -7,7 +7,7 @@ import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
  */
 public class FighterBee extends AbstractFighter {
 
-    public FighterBee(double x, double y, int height, int width) {
+    public FighterBee(float x, float y, int height, int width) {
         super(x, y, height, width, "bee");
     }
 

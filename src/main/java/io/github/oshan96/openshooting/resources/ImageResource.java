@@ -25,9 +25,8 @@ public class ImageResource {
     }
 
     public Texture getTexture() {
-        if(texture == null) {
-            texture = AWTTextureIO.newTexture(Renderer.getProfile(), image, true);
-        }
+        texture = AWTTextureIO.newTexture(Renderer.getProfile(), image, true);
+
         return texture;
     }
 
@@ -41,6 +40,7 @@ public class ImageResource {
 
     public ImageResource setImage(BufferedImage image) {
         this.image = image;
+        this.image.flush();
         return this;
     }
 

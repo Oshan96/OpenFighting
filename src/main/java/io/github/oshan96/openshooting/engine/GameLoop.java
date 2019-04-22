@@ -8,7 +8,7 @@ import io.github.oshan96.openshooting.world.World;
  */
 public class GameLoop extends Thread {
 
-    private int fps_cap = 60;
+    private int fps_cap = 30;
     private long targetTime = 1000000000 / fps_cap;   //frames per sec
 
     private int updateCount = 0;
@@ -25,12 +25,11 @@ public class GameLoop extends Thread {
     public void run() {
 
         lastUpdateTime = System.nanoTime();
-//        int fps = 0;
-//        long lastFPSCheck = System.nanoTime();
 
         while(this.isAlive()) {
 
             //poll inputs
+
             updateCount = 0;
             long curretTime = System.nanoTime();
 
@@ -47,7 +46,6 @@ public class GameLoop extends Thread {
 
             //render
             Renderer.render();
-
 
             long startTime = System.nanoTime();
             long takenTime = System.nanoTime() - startTime;

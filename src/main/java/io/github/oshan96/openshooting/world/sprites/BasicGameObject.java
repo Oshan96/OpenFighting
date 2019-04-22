@@ -6,33 +6,33 @@ import com.jogamp.opengl.util.texture.Texture;
  * @author oshan
  */
 public abstract class BasicGameObject {
-    protected double x;
-    protected double y;
+    protected float x;
+    protected float y;
     protected int height;
     protected int width;
 
     protected Texture currentTexture = null;
 
-    public BasicGameObject(double x, double y, int height, int width) {
+    public BasicGameObject(float x, float y, int height, int width) {
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
     }
 
-    public double getX() {
+    public float getX() {
         return x;
     }
 
-    public void setX(double x) {
+    public void setX(float x) {
         this.x = x;
     }
 
-    public double getY() {
+    public float getY() {
         return y;
     }
 
-    public void setY(double y) {
+    public void setY(float y) {
         this.y = y;
     }
 

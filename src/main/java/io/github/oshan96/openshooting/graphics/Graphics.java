@@ -19,6 +19,8 @@ public class Graphics {
         float width = tex.getWidth();
         float height = tex.getHeight();
 
+        gl.glTranslatef(x, y, 0);
+
         gl.glColor4f(1, 1, 1, 1);
 
         gl.glBegin(GL2.GL_QUADS);
@@ -37,7 +39,7 @@ public class Graphics {
 
         gl.glFlush();
 
-
+        gl.glTranslatef(-x, -y, 0);
 
     }
 }

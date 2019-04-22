@@ -4,6 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import io.github.oshan96.openshooting.world.World;
+import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterKree;
 
 /**
  * @author oshan
@@ -14,8 +15,13 @@ public class EventListenerImpl implements GLEventListener {
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
+        System.out.println("init");
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClearColor(0,0,0,1);       //use black when the screen is cleared
+        gl.glEnable(GL2.GL_TEXTURE_2D);
+
+        FighterKree playerOne = new FighterKree(0,0,64,64);
+        World.addGameObject(playerOne);
     }
 
     @Override
@@ -25,7 +31,7 @@ public class EventListenerImpl implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-        gl.glEnable(GL2.GL_TEXTURE_2D);
+//        gl.glEnable(GL2.GL_TEXTURE_2D);
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);        //clear the color buffer
 
         World.render();

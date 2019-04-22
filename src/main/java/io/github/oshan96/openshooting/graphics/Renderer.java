@@ -5,7 +5,6 @@ import com.jogamp.newt.event.WindowEvent;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.util.FPSAnimator;
 
 /**
  * @author oshan
@@ -23,23 +22,18 @@ public class Renderer {
         GLCapabilities capabilities = new GLCapabilities(profile);
 
         window = GLWindow.create(capabilities);
+
         window.setSize(800,600);
         window.setResizable(false);
-
         window.setTitle("Open Fighting - I");
 
         window.addGLEventListener(new EventListenerImpl());
-
-//
-//        window.addWindowListener(new WindowAdapter() {
-//            @Override
-//            public void windowDestroyNotify(WindowEvent windowEvent) {
-//                if(animator.isAnimating())
-//                    animator.stop();
-//                System.exit(0);
-//            }
-//        });
-//
+        window.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowDestroyNotify(WindowEvent windowEvent) {
+                System.exit(0);
+            }
+        });
 
         window.setVisible(true);
 
