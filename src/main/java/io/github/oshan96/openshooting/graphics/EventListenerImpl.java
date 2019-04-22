@@ -15,7 +15,6 @@ public class EventListenerImpl implements GLEventListener {
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
-        System.out.println("init");
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClearColor(0,0,0,1);       //use black when the screen is cleared
         gl.glEnable(GL2.GL_TEXTURE_2D);

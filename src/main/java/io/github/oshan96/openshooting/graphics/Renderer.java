@@ -5,6 +5,7 @@ import com.jogamp.newt.event.WindowEvent;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
+import io.github.oshan96.openshooting.inputs.KeyEventListener;
 
 /**
  * @author oshan
@@ -28,6 +29,7 @@ public class Renderer {
         window.setTitle("Open Fighting - I");
 
         window.addGLEventListener(new EventListenerImpl());
+        window.addKeyListener(new KeyEventListener());
         window.addWindowListener(new WindowAdapter() {
             @Override
             public void windowDestroyNotify(WindowEvent windowEvent) {

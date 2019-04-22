@@ -9,8 +9,6 @@ import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
  */
 public class FighterKree extends AbstractFighter {
 
-    private static int place = 0;   //for testing
-
     public FighterKree(float x, float y, int height, int width) {
         super(x, y, height, width, "kree");
 
@@ -19,9 +17,6 @@ public class FighterKree extends AbstractFighter {
     @Override
     public void update() {
         //testing code
-        if(place > 5)
-            place = 0;
-        currentTexture = sprites.get(place++);
 
         x+=0.02;
         if(x > Renderer.tileSize / 2)
@@ -32,8 +27,11 @@ public class FighterKree extends AbstractFighter {
 
     @Override
     public void render() {
-        Graphics.createObjectTexture(currentTexture,x,y,width,height);
+        animations.get("test").play();
+//        Graphics.createObjectTexture(currentTexture,x,y,width,height);
+        Graphics.createObjectTexture(animations.get("test").getCurrentImage(),x,y,width,height);
     }
+
 
     @Override
     public void lowPunch() {

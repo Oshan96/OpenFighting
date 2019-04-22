@@ -8,7 +8,7 @@ import io.github.oshan96.openshooting.world.World;
  */
 public class GameLoop extends Thread {
 
-    private int fps_cap = 30;
+    private int fps_cap = 60;
     private long targetTime = 1000000000 / fps_cap;   //frames per sec
 
     private int updateCount = 0;
