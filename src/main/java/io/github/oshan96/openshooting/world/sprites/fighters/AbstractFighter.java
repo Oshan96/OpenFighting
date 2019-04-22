@@ -1,7 +1,9 @@
 package io.github.oshan96.openshooting.world.sprites.fighters;
 
 import com.jogamp.opengl.util.texture.Texture;
+import io.github.oshan96.openshooting.engine.GameLoop;
 import io.github.oshan96.openshooting.graphics.Animation;
+import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.resources.SpriteSheet;
 import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 
@@ -14,9 +16,10 @@ import java.util.Map;
  */
 public abstract class AbstractFighter extends BasicGameObject implements Fighter {
     /**
-     * attackSpeed determines the time delay between two hits
+     * movementSpeed determines the time delay between two hits
      */
-    protected double attackSpeed;
+    protected float movementSpeed = 2.0f;
+    protected boolean isFacingLeft = true;
 
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
@@ -54,16 +57,50 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         /////////////////
     }
 
-    public AbstractFighter(float x, float y, int height, int width, String fighterName, double attackSpeed) {
+    public AbstractFighter(float x, float y, int height, int width, String fighterName, float movementSpeed) {
         this(x, y, height, width, fighterName);
-        this.attackSpeed = attackSpeed;
+        this.movementSpeed = movementSpeed;
     }
 
-    public double getAttackSpeed() {
-        return attackSpeed;
+    public float getMovementSpeed() {
+        return movementSpeed;
     }
 
-    public void setAttackSpeed(double attackSpeed) {
-        this.attackSpeed = attackSpeed;
+    public void setMovementSpeed(float movementSpeed) {
+        this.movementSpeed = movementSpeed;
+    }
+
+    public boolean isFacingLeft() {
+        return isFacingLeft;
+    }
+
+    public void setFacingLeft(boolean facingLeft) {
+        isFacingLeft = facingLeft;
+    }
+
+    @Override
+    public void move(boolean isMovingRight) {
+        float xIn = 0;
+        if(isFacingLeft) {
+            if(isMovingRight) {
+                xIn++;
+            } else {
+                xIn--;
+            }
+        } else {
+            if(isMovingRight) {
+                xIn++;
+            } else {
+                xIn--;
+            }
+        }
+
+        x += xIn * movementSpeed * GameLoop.getDelta();
+
+        if(x>Renderer.tileSize / 2 - 0.5f) {
+            x = Renderer.tileSize / 2 - 0.5f;
+        } else if(x<-Renderer.tileSize / 2 + 0.5f) {
+            x = -Renderer.tileSize / 2 + 0.5f;
+        }
     }
 }

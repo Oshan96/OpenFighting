@@ -12,6 +12,6 @@ public interface Fighter {
 
     void jump();
     void crouch();
-    void turnLeft();
-    void turnRight();
+    void move(boolean isMovingRight);
+
 }

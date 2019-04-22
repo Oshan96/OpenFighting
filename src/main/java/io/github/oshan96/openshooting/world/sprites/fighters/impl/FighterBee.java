@@ -1,5 +1,8 @@
 package io.github.oshan96.openshooting.world.sprites.fighters.impl;
 
+import com.jogamp.newt.event.KeyEvent;
+import io.github.oshan96.openshooting.graphics.Graphics;
+import io.github.oshan96.openshooting.inputs.KeyEventListener;
 import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
 
 /**
@@ -13,12 +16,25 @@ public class FighterBee extends AbstractFighter {
 
     @Override
     public void update() {
+        //testing code
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_D)) {
+            move(true);
+        }
 
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_A)) {
+            move(false);
+        }
+
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_W)) {
+            jump();
+        }
     }
 
     @Override
     public void render() {
-
+        animations.get("test").play();
+//        Graphics.createObjectTexture(currentTexture,x,y,width,height);
+        Graphics.createObjectTexture(animations.get("test").getCurrentImage(),x,y,width,height);
     }
 
     @Override
@@ -56,13 +72,4 @@ public class FighterBee extends AbstractFighter {
 
     }
 
-    @Override
-    public void turnLeft() {
-
-    }
-
-    @Override
-    public void turnRight() {
-
-    }
 }

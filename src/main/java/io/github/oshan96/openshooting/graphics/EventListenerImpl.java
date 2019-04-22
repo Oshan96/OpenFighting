@@ -4,6 +4,7 @@ import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import io.github.oshan96.openshooting.world.World;
+import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterBee;
 import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterKree;
 
 /**
@@ -20,7 +21,9 @@ public class EventListenerImpl implements GLEventListener {
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
         FighterKree playerOne = new FighterKree(0,0,64,64);
+        FighterBee playerTwo = new FighterBee(-1,0,64,64);
         World.addGameObject(playerOne);
+        World.addGameObject(playerTwo);
     }
 
     @Override

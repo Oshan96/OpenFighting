@@ -8,8 +8,8 @@ import io.github.oshan96.openshooting.world.World;
  */
 public class GameLoop extends Thread {
 
-    private int fps_cap = 60;
-    private long targetTime = 1000000000 / fps_cap;   //frames per sec
+    private static int fps_cap = 60;
+    private static long targetTime = 1000000000 / fps_cap;   //frames per sec
 
     private int updateCount = 0;
     private long lastUpdateTime = 0;
@@ -77,6 +77,10 @@ public class GameLoop extends Thread {
 
     public int getFPS() {
         return this.fps_cap;
+    }
+
+    public static float getDelta() {
+        return 1.0f * targetTime / 1000000000;
     }
 
 

@@ -1,7 +1,8 @@
 package io.github.oshan96.openshooting.world.sprites.fighters.impl;
 
+import com.jogamp.newt.event.KeyEvent;
 import io.github.oshan96.openshooting.graphics.Graphics;
-import io.github.oshan96.openshooting.graphics.Renderer;
+import io.github.oshan96.openshooting.inputs.KeyEventListener;
 import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
 
 /**
@@ -17,12 +18,18 @@ public class FighterKree extends AbstractFighter {
     @Override
     public void update() {
         //testing code
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_RIGHT)) {
+            move(true);
+        }
 
-        x+=0.02;
-        if(x > Renderer.tileSize / 2)
-            x= - Renderer.tileSize / 2;
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_LEFT)) {
+            move(false);
+        }
 
-        ////////////////
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_UP)) {
+            jump();
+        }
+
     }
 
     @Override
@@ -68,13 +75,4 @@ public class FighterKree extends AbstractFighter {
 
     }
 
-    @Override
-    public void turnLeft() {
-
-    }
-
-    @Override
-    public void turnRight() {
-
-    }
 }
