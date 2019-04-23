@@ -13,11 +13,11 @@ public abstract class BasicGameObject {
 
     protected Texture currentTexture = null;
 
-    public BasicGameObject(float x, float y, int height, int width) {
+    public BasicGameObject(float x, float y, int width, int height) {
         this.x = x;
         this.y = y;
-        this.height = height;
         this.width = width;
+        this.height = height;
     }
 
     public float getX() {

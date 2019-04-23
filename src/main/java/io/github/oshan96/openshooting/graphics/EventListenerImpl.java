@@ -20,8 +20,8 @@ public class EventListenerImpl implements GLEventListener {
         gl.glClearColor(0,0,0,1);       //use black when the screen is cleared
         gl.glEnable(GL2.GL_TEXTURE_2D);
 
-        FighterKree playerOne = new FighterKree(0,0,64,64);
-        FighterBee playerTwo = new FighterBee(-1,0,64,64);
+        FighterKree playerOne = new FighterKree(0,0,64,64, 15, 5);
+        FighterBee playerTwo = new FighterBee(-1,0,64,64, 15, 5);
         World.addGameObject(playerOne);
         World.addGameObject(playerTwo);
     }

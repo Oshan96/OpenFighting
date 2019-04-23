@@ -31,7 +31,11 @@ public class SpriteSheet {
         return this;
     }
 
-    public List<Texture> getSprites(int spriteHeight, int spriteWidth ) {
+    public List<Texture> getSprites(int spriteWidth, int spriteHeight ) {
+        return getSprites(spriteWidth, spriteHeight, 0, 0);
+    }
+
+    public List<Texture> getSprites(int spriteWidth, int spriteHeight, int offsetX, int offsetY) {
         List<Texture> images = new ArrayList<>();
         int rows = 6;
         int cols = 18;
@@ -39,7 +43,7 @@ public class SpriteSheet {
 
         for(int i=0; i<rows; i++) {
             for(int j=0; j<cols; j++) {
-                BufferedImage image1 = image.getSubimage(x,y,spriteWidth,spriteHeight);
+                BufferedImage image1 = image.getSubimage(x+offsetX,y+offsetY,(spriteWidth-offsetX*2),(spriteHeight-offsetY*2));
                 image1.flush();
                 imageResource.setImage(image1);
                 images.add(imageResource.getTexture());
