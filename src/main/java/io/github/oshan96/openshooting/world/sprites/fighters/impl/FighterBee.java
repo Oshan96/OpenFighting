@@ -1,7 +1,9 @@
 package io.github.oshan96.openshooting.world.sprites.fighters.impl;
 
 import com.jogamp.newt.event.KeyEvent;
+import io.github.oshan96.openshooting.engine.GameLoop;
 import io.github.oshan96.openshooting.graphics.Graphics;
+import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.inputs.KeyEventListener;
 import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
 
@@ -31,6 +33,7 @@ public class FighterBee extends AbstractFighter {
      */
     @Override
     public void update() {
+        float yIn = 0;
         //testing code
         if(KeyEventListener.isRegisteredKey(KeyEvent.VK_D)) {
             move(true);
@@ -41,7 +44,24 @@ public class FighterBee extends AbstractFighter {
         }
 
         if (KeyEventListener.isRegisteredKey(KeyEvent.VK_W)) {
-            jump();
+
+            y += ++yIn * movementSpeed * GameLoop.getDelta();
+
+            if(y>Renderer.tileSize / 2 - 0.5f) {
+                y = Renderer.tileSize / 2 - 0.5f;
+            } else if(y<-Renderer.tileSize / 2 + 0.5f) {
+                y = -Renderer.tileSize / 2 + 0.5f;
+            }
+        }
+
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_S)) {
+            y += --yIn * movementSpeed * GameLoop.getDelta();
+
+            if(y>Renderer.tileSize / 2 - 0.5f) {
+                y = Renderer.tileSize / 2 - 0.5f;
+            } else if(y<-Renderer.tileSize / 2 + 0.5f) {
+                y = -Renderer.tileSize / 2 + 0.5f;
+            }
         }
     }
 

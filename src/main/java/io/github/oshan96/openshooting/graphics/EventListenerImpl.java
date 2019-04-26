@@ -36,6 +36,7 @@ public class EventListenerImpl implements GLEventListener {
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
 //        gl.glEnable(GL2.GL_TEXTURE_2D);
+        gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);        //clear the color buffer
 
         World.render();

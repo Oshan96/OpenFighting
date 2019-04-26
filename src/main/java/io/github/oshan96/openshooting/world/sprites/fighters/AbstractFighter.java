@@ -21,6 +21,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
+    protected Texture powerTexture = null;
 
     protected Map<String,Animation> animations = null;
 

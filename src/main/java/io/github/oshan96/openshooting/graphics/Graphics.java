@@ -16,8 +16,8 @@ public class Graphics {
             gl.glBindTexture(GL2.GL_TEXTURE_2D, tex.getTextureObject());
         }
 
-        float width = tex.getWidth();
-        float height = tex.getHeight();
+        float width = w/Renderer.tileSize;
+        float height = h/Renderer.tileSize;
 
         gl.glTranslatef(x, y, 0);
 
@@ -25,16 +25,16 @@ public class Graphics {
 
         gl.glBegin(GL2.GL_QUADS);
         gl.glTexCoord2f(0, 1);
-        gl.glVertex2f(-1 , -1 );
+        gl.glVertex2f(-width/4 , -height/4 );
 
         gl.glTexCoord2f(1, 1);
-        gl.glVertex2f(1 , -1 );
+        gl.glVertex2f(width/4 , -height/4 );
 
         gl.glTexCoord2f(1, 0);
-        gl.glVertex2f(1 , 1 );
+        gl.glVertex2f(width/4 , height/4 );
 
         gl.glTexCoord2f(0, 0);
-        gl.glVertex2f(-1 , 1 );
+        gl.glVertex2f(-width/4 , height/4 );
         gl.glEnd();
 
         gl.glFlush();

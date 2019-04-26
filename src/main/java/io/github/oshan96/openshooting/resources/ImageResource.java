@@ -1,6 +1,9 @@
 package io.github.oshan96.openshooting.resources;
 
+import com.jogamp.opengl.GLBase;
+import com.jogamp.opengl.GLContext;
 import com.jogamp.opengl.util.texture.Texture;
+import com.jogamp.opengl.util.texture.TextureIO;
 import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
 import io.github.oshan96.openshooting.graphics.Renderer;
 
@@ -44,12 +47,14 @@ public class ImageResource {
         return this;
     }
 
-    public void setImage(String path) {
+    public ImageResource setImage(String path) {
         try {
             image = ImageIO.read(ImageResource.class.getResource(path));
             image.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return this;
     }
 }

@@ -1,8 +1,13 @@
 package io.github.oshan96.openshooting.world.sprites.fighters.impl;
 
 import com.jogamp.newt.event.KeyEvent;
+import io.github.oshan96.openshooting.engine.GameLoop;
 import io.github.oshan96.openshooting.graphics.Graphics;
+import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.inputs.KeyEventListener;
+import io.github.oshan96.openshooting.resources.ImageResource;
+import io.github.oshan96.openshooting.world.World;
+import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
 
 /**
@@ -24,6 +29,7 @@ public class FighterKree extends AbstractFighter {
      */
     public FighterKree(float x, float y, int width, int height, int offsetX, int offsetY) {
         super(x, y, width, height, "kree", offsetX, offsetY);
+        powerTexture = new ImageResource().setImage("/images/powers/kree_power.png").getTexture();
     }
 
     /**
@@ -31,6 +37,7 @@ public class FighterKree extends AbstractFighter {
      */
     @Override
     public void update() {
+        float yIn = 0;
         //testing code
         if(KeyEventListener.isRegisteredKey(KeyEvent.VK_RIGHT)) {
             move(true);
@@ -41,7 +48,51 @@ public class FighterKree extends AbstractFighter {
         }
 
         if (KeyEventListener.isRegisteredKey(KeyEvent.VK_UP)) {
-            jump();
+
+            y += ++yIn * movementSpeed * GameLoop.getDelta();
+
+            if(y>Renderer.tileSize / 2 - 0.5f) {
+                y = Renderer.tileSize / 2 - 0.5f;
+            } else if(y<-Renderer.tileSize / 2 + 0.5f) {
+                y = -Renderer.tileSize / 2 + 0.5f;
+            }
+        }
+
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_DOWN)) {
+            y += --yIn * movementSpeed * GameLoop.getDelta();
+
+            if(y>Renderer.tileSize / 2 - 0.5f) {
+                y = Renderer.tileSize / 2 - 0.5f;
+            } else if(y<-Renderer.tileSize / 2 + 0.5f) {
+                y = -Renderer.tileSize / 2 + 0.5f;
+            }
+        }
+
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_ENTER)) {
+
+            //test
+            BasicGameObject power = new BasicGameObject(x+1f,y,16,16) {
+                float movementSpeed = 2;
+                {
+                    currentTexture = powerTexture;
+                }
+                @Override
+                public void update() {
+                    float xIn = 0;
+                    x+= ++xIn * movementSpeed * GameLoop.getDelta();
+
+                    if(x>Renderer.tileSize / 2 - 0.5f){
+                        World.removeGameObject(this);
+                    }
+                }
+
+                @Override
+                public void render() {
+                    Graphics.createObjectTexture(currentTexture,x,y,16,16);
+                }
+            };
+            World.addGameObject(power);
+            ////
         }
 
     }
