@@ -7,9 +7,7 @@ import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.resources.SpriteSheet;
 import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author oshan
@@ -43,12 +41,12 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         super(x, y, width-(offsetX*2), height-(offsetY*2));
         sprites = SpriteSheet.getInstance()
                 .loadSpriteSheet("/images/sprites/"+fighterName+".png")
-                .getSprites(width,height,offsetX,offsetY);
+                .getSprites(width,height,offsetX,offsetY,7,18);
 
         initialStance = sprites.get(0);
         currentTexture = initialStance;
 
-        initActions();
+        initActions(fighterName,offsetX,offsetY);
     }
 
     public AbstractFighter(float x, float y, int width, int height, String fighterName, float movementSpeed) {
@@ -59,19 +57,20 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     /**
      * Creates the movement animations for this character and adds them to animations map
      */
-    private void initActions() {
+    private void initActions(String name, int offsetX, int offsetY) {
         animations = new HashMap<>();
 
         //a test animation
         Animation testAnime = new Animation();
-        Texture[] textures = new Texture[]{
-                sprites.get(0),
-                sprites.get(1),
-                sprites.get(2),
-                sprites.get(3)
-        };
+
+        //test animation idle-state
+        List<Texture> textures = SpriteSheet
+                .getInstance()
+                .loadSpriteSheet("/images/sprites/"+name+"/idle/idle_state_"+name+"_sheet.png")
+                .getSprites(width,height,offsetX,offsetY,1,5);
 
         testAnime.setSprites(textures);
+        testAnime.setFps(20);
 
         animations.put("test",testAnime);
         /////////////////

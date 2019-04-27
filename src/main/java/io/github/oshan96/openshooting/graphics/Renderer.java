@@ -15,7 +15,7 @@ public class Renderer {
     private static GLWindow window = null;
     private static GLProfile profile = null;
 
-    public static int tileSize = 15;
+    public static int tileSize = 20;
 
     public static void init() {
         GLProfile.initSingleton();

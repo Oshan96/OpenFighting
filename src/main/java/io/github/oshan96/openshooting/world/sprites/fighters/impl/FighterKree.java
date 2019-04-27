@@ -72,7 +72,7 @@ public class FighterKree extends AbstractFighter {
 
             //test
             BasicGameObject power = new BasicGameObject(x+1f,y,16,16) {
-                float movementSpeed = 2;
+                float movementSpeed = 6;
                 {
                     currentTexture = powerTexture;
                 }

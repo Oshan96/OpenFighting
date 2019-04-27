@@ -2,11 +2,13 @@ package io.github.oshan96.openshooting.graphics;
 
 import com.jogamp.opengl.util.texture.Texture;
 
+import java.util.List;
+
 /**
  * @author oshan
  */
 public class Animation {
-    private Texture[] sprites;
+    private List<Texture> sprites;
     private int currentFrame = 0;
     private int fps = 20;
     private long lastFrameTime = 0;
@@ -14,7 +16,7 @@ public class Animation {
     public Animation() {
     }
 
-    public Animation(Texture[] sprites) {
+    public Animation(List<Texture> sprites) {
         this.sprites = sprites;
     }
 
@@ -25,7 +27,7 @@ public class Animation {
         if(currentTime > lastFrameTime + 1000000000 / fps) {
             currentFrame++;
 
-            if(currentFrame >= sprites.length) {
+            if(currentFrame >= sprites.size()) {
                 currentFrame = 0;
             }
 
@@ -33,11 +35,11 @@ public class Animation {
         }
     }
 
-    public Texture[] getSprites() {
+    public List<Texture> getSprites() {
         return sprites;
     }
 
-    public void setSprites(Texture[] sprites) {
+    public void setSprites(List<Texture> sprites) {
         this.sprites = sprites;
     }
 
@@ -50,6 +52,6 @@ public class Animation {
     }
 
     public Texture getCurrentImage() {
-        return sprites[currentFrame];
+        return sprites.get(currentFrame);
     }
 }

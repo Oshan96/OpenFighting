@@ -31,14 +31,12 @@ public class SpriteSheet {
         return this;
     }
 
-    public List<Texture> getSprites(int spriteWidth, int spriteHeight ) {
-        return getSprites(spriteWidth, spriteHeight, 0, 0);
+    public List<Texture> getSprites(int spriteWidth, int spriteHeight, int rows, int cols ) {
+        return getSprites(spriteWidth, spriteHeight, 0, 0,rows,cols);
     }
 
-    public List<Texture> getSprites(int spriteWidth, int spriteHeight, int offsetX, int offsetY) {
+    public List<Texture> getSprites(int spriteWidth, int spriteHeight, int offsetX, int offsetY, int rows, int cols) {
         List<Texture> images = new ArrayList<>();
-        int rows = 6;
-        int cols = 18;
         int x=0, y=0;
 
         for(int i=0; i<rows; i++) {
@@ -55,4 +53,9 @@ public class SpriteSheet {
 
         return images;
     }
+
+    public ImageResource getImageResource() {
+        return imageResource;
+    }
+
 }
