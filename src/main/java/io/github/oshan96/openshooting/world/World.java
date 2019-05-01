@@ -1,5 +1,8 @@
 package io.github.oshan96.openshooting.world;
 
+import io.github.oshan96.openshooting.graphics.EventListenerImpl;
+import io.github.oshan96.openshooting.graphics.Graphics;
+import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 
 import java.util.List;
@@ -28,6 +31,7 @@ public class World {
      * calls the "render()" method of all game-objects
      */
     public static void render() {
+        Graphics.createObjectTexture(EventListenerImpl.background,0,1,Renderer.getWindowWidth()/2 ,Renderer.getWindowHeight()/1.75f);
         for(BasicGameObject object : gameObjects)
             object.render();
     }

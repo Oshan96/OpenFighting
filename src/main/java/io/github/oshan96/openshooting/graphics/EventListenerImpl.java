@@ -3,6 +3,8 @@ package io.github.oshan96.openshooting.graphics;
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
+import com.jogamp.opengl.util.texture.Texture;
+import io.github.oshan96.openshooting.resources.ImageResource;
 import io.github.oshan96.openshooting.world.World;
 import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterBee;
 import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterKree;
@@ -13,6 +15,9 @@ import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterKree;
 public class EventListenerImpl implements GLEventListener {
 
     public static GL2 gl;
+    public static Texture background = null;
+
+
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -21,6 +26,9 @@ public class EventListenerImpl implements GLEventListener {
         gl.glEnable(GL2.GL_TEXTURE_2D);
         gl.glEnable(GL2.GL_BLEND);
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+
+        background = new ImageResource("/images/background/street.png").getTexture();
+        Graphics.createObjectTexture(background,0,0,32,32);
 
         FighterKree playerOne = new FighterKree(0,0,64,64, 0, 0);
         FighterBee playerTwo = new FighterBee(-1,0,64,64, 0, 0);
