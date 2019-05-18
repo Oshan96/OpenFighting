@@ -8,10 +8,10 @@ import java.util.List;
  * @author oshan
  */
 public class Animation {
-    private List<Texture> sprites;
-    private int currentFrame = 0;
+    protected List<Texture> sprites;
+    protected int currentFrame = 0;
     private int fps = 20;
-    private long lastFrameTime = 0;
+    protected long lastFrameTime = 0;
 
     public Animation() {
     }

@@ -28,10 +28,10 @@ public class EventListenerImpl implements GLEventListener {
         gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 
         background = new ImageResource("/images/background/street.png").getTexture();
-        Graphics.createObjectTexture(background,0,0,32,32);
+        Graphics.createObjectTexture(background,0,0,Renderer.tileSize,Renderer.vTileSize);
 
-        FighterKree playerOne = new FighterKree(0,0,64,64, 0, 0);
-        FighterBee playerTwo = new FighterBee(-1,0,64,64, 0, 0);
+        FighterKree playerOne = new FighterKree(0,-5.25f,64,64, 0, 0);
+        FighterBee playerTwo = new FighterBee(-2.5f,-5.25f,64,64, 0, 0);
         World.addGameObject(playerOne);
         World.addGameObject(playerTwo);
     }
@@ -57,11 +57,7 @@ public class EventListenerImpl implements GLEventListener {
         gl.glMatrixMode(GL2.GL_PROJECTION);     //2-Dimensional
         gl.glLoadIdentity();
 
-//        gl.glOrtho(-400,400,-300,300,-1,1);    //-x,x,-y,y,-z,z (screen is mapped to pixel value)
-
-        float unitsTall = Renderer.getWindowHeight() / (Renderer.getWindowWidth() / Renderer.tileSize);
-
-        gl.glOrtho(-Renderer.tileSize / 2, Renderer.tileSize / 2, -unitsTall / 2, unitsTall / 2, -1, 1);
+        gl.glOrtho(-Renderer.tileSize / 2, Renderer.tileSize / 2, -Renderer.vTileSize/2, Renderer.vTileSize/2, -1, 1);
 
         gl.glMatrixMode(GL2.GL_MODELVIEW);
     }

@@ -15,13 +15,19 @@ import java.util.*;
 public abstract class AbstractFighter extends BasicGameObject implements Fighter {
 
     protected float movementSpeed = 2.0f;
+    protected float attackSpeed = 1.0f;
     protected boolean isFacingLeft = true;
+
+    protected float charHeight = 3.5f;
+    protected float charWidth = 3.5f;
 
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
     protected Texture powerTexture = null;
 
     protected Map<String,Animation> animations = null;
+
+    protected Animation currentAnimation = null;
 
 
     public AbstractFighter(float x, float y, int width, int height, String fighterName) {
@@ -73,6 +79,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         testAnime.setFps(20);
 
         animations.put("test",testAnime);
+        currentAnimation = testAnime;
         /////////////////
     }
 
@@ -90,6 +97,14 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     public void setFacingLeft(boolean facingLeft) {
         isFacingLeft = facingLeft;
+    }
+
+    public float getAttackSpeed() {
+        return attackSpeed;
+    }
+
+    public void setAttackSpeed(float attackSpeed) {
+        this.attackSpeed = attackSpeed;
     }
 
     @Override

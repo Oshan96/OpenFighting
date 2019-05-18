@@ -31,7 +31,7 @@ public class World {
      * calls the "render()" method of all game-objects
      */
     public static void render() {
-        Graphics.createObjectTexture(EventListenerImpl.background,0,1,Renderer.getWindowWidth()/2 ,Renderer.getWindowHeight()/1.75f);
+        Graphics.createObjectTexture(EventListenerImpl.background,0,0,Renderer.tileSize ,Renderer.vTileSize);
         for(BasicGameObject object : gameObjects)
             object.render();
     }

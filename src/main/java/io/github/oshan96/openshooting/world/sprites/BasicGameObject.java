@@ -1,11 +1,12 @@
 package io.github.oshan96.openshooting.world.sprites;
 
 import com.jogamp.opengl.util.texture.Texture;
+import io.github.oshan96.openshooting.physics.Collidable;
 
 /**
  * @author oshan
  */
-public abstract class BasicGameObject {
+public abstract class BasicGameObject implements Collidable {
     protected float x;
     protected float y;
     protected int height;

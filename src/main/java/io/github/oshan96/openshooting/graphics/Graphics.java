@@ -8,16 +8,13 @@ import com.jogamp.opengl.util.texture.Texture;
  */
 public class Graphics {
 
-    public static void createObjectTexture(Texture tex, float x, float y, float w, float h) {
+    public static void createObjectTexture(Texture tex, float x, float y, float width, float height) {
         GL2 gl = EventListenerImpl.gl;
 
 
         if (tex != null) {
             gl.glBindTexture(GL2.GL_TEXTURE_2D, tex.getTextureObject());
         }
-
-        float width = w/Renderer.tileSize;
-        float height = h/Renderer.tileSize;
 
         gl.glTranslatef(x, y, 0);
 

@@ -5,6 +5,9 @@ import io.github.oshan96.openshooting.engine.GameLoop;
 import io.github.oshan96.openshooting.graphics.Graphics;
 import io.github.oshan96.openshooting.graphics.Renderer;
 import io.github.oshan96.openshooting.inputs.KeyEventListener;
+import io.github.oshan96.openshooting.resources.ImageResource;
+import io.github.oshan96.openshooting.world.World;
+import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
 import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
 
 /**
@@ -26,6 +29,7 @@ public class FighterBee extends AbstractFighter {
      */
     public FighterBee(float x, float y, int width, int height, int offsetX, int offsetY) {
         super(x, y, width, height, "bee", offsetX, offsetY);
+        powerTexture = new ImageResource().setImage("/images/powers/bee_power.png").getTexture();
     }
 
     /**
@@ -63,6 +67,33 @@ public class FighterBee extends AbstractFighter {
                 y = -Renderer.tileSize / 2 + 0.5f;
             }
         }
+
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_F)) {
+
+            //test
+            BasicGameObject power = new BasicGameObject(x+1f,y,16,16) {
+                float movementSpeed = 6;
+                {
+                    currentTexture = powerTexture;
+                }
+                @Override
+                public void update() {
+                    float xIn = 0;
+                    x+= ++xIn * movementSpeed * GameLoop.getDelta();
+
+                    if(x>Renderer.tileSize / 2 - 0.5f){
+                        World.removeGameObject(this);
+                    }
+                }
+
+                @Override
+                public void render() {
+                    Graphics.createObjectTexture(currentTexture,x,y,0.8f,0.8f);
+                }
+            };
+            World.addGameObject(power);
+            ////
+        }
     }
 
     /**
@@ -71,8 +102,7 @@ public class FighterBee extends AbstractFighter {
     @Override
     public void render() {
         animations.get("test").play();
-//        Graphics.createObjectTexture(currentTexture,x,y,width,height);
-        Graphics.createObjectTexture(animations.get("test").getCurrentImage(),x,y,width,height);
+        Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight);
     }
 
     @Override
