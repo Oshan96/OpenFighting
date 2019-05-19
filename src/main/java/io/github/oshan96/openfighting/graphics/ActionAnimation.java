@@ -1,7 +1,7 @@
-package io.github.oshan96.openshooting.graphics;
+package io.github.oshan96.openfighting.graphics;
 
 import com.jogamp.opengl.util.texture.Texture;
-import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
+import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
 
 import java.util.List;
 

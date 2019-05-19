@@ -1,4 +1,4 @@
-package io.github.oshan96.openshooting.graphics;
+package io.github.oshan96.openfighting.graphics;
 
 import com.jogamp.opengl.util.texture.Texture;
 

@@ -1,7 +1,7 @@
-package io.github.oshan96.openshooting.engine;
+package io.github.oshan96.openfighting.engine;
 
-import io.github.oshan96.openshooting.graphics.Renderer;
-import io.github.oshan96.openshooting.world.World;
+import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.world.World;
 
 /**
  * @author oshan

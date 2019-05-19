@@ -1,11 +1,11 @@
-package io.github.oshan96.openshooting.world.sprites.fighters;
+package io.github.oshan96.openfighting.world.sprites.fighters;
 
 import com.jogamp.opengl.util.texture.Texture;
-import io.github.oshan96.openshooting.engine.GameLoop;
-import io.github.oshan96.openshooting.graphics.Animation;
-import io.github.oshan96.openshooting.graphics.Renderer;
-import io.github.oshan96.openshooting.resources.SpriteSheet;
-import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
+import io.github.oshan96.openfighting.engine.GameLoop;
+import io.github.oshan96.openfighting.graphics.Animation;
+import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.resources.SpriteSheet;
+import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
 
 import java.util.*;
 

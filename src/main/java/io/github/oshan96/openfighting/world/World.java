@@ -1,9 +1,9 @@
-package io.github.oshan96.openshooting.world;
+package io.github.oshan96.openfighting.world;
 
-import io.github.oshan96.openshooting.graphics.EventListenerImpl;
-import io.github.oshan96.openshooting.graphics.Graphics;
-import io.github.oshan96.openshooting.graphics.Renderer;
-import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
+import io.github.oshan96.openfighting.graphics.EventListenerImpl;
+import io.github.oshan96.openfighting.graphics.Graphics;
+import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;

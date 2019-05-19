@@ -1,7 +1,7 @@
-package io.github.oshan96.openshooting.world.sprites;
+package io.github.oshan96.openfighting.world.sprites;
 
 import com.jogamp.opengl.util.texture.Texture;
-import io.github.oshan96.openshooting.physics.Collidable;
+import io.github.oshan96.openfighting.physics.Collidable;
 
 /**
  * @author oshan

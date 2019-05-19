@@ -1,13 +1,13 @@
-package io.github.oshan96.openshooting.graphics;
+package io.github.oshan96.openfighting.graphics;
 
 import com.jogamp.opengl.GL2;
 import com.jogamp.opengl.GLAutoDrawable;
 import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.texture.Texture;
-import io.github.oshan96.openshooting.resources.ImageResource;
-import io.github.oshan96.openshooting.world.World;
-import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterBee;
-import io.github.oshan96.openshooting.world.sprites.fighters.impl.FighterKree;
+import io.github.oshan96.openfighting.resources.ImageResource;
+import io.github.oshan96.openfighting.world.World;
+import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterBee;
+import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterKree;
 
 /**
  * @author oshan

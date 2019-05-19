@@ -1,12 +1,8 @@
-package io.github.oshan96.openshooting.resources;
+package io.github.oshan96.openfighting.resources;
 
-import com.jogamp.opengl.GLBase;
-import com.jogamp.opengl.GLContext;
 import com.jogamp.opengl.util.texture.Texture;
-import com.jogamp.opengl.util.texture.TextureData;
-import com.jogamp.opengl.util.texture.TextureIO;
 import com.jogamp.opengl.util.texture.awt.AWTTextureIO;
-import io.github.oshan96.openshooting.graphics.Renderer;
+import io.github.oshan96.openfighting.graphics.Renderer;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

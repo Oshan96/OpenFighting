@@ -1,4 +1,4 @@
-package io.github.oshan96.openshooting.world.sprites.fighters;
+package io.github.oshan96.openfighting.world.sprites.fighters;
 
 /**
  * @author oshan

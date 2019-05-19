@@ -1,4 +1,4 @@
-package io.github.oshan96.openshooting.physics;
+package io.github.oshan96.openfighting.physics;
 
 /**
  * @author oshan

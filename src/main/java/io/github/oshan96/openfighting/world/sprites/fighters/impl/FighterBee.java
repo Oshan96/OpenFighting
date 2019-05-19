@@ -1,14 +1,14 @@
-package io.github.oshan96.openshooting.world.sprites.fighters.impl;
+package io.github.oshan96.openfighting.world.sprites.fighters.impl;
 
 import com.jogamp.newt.event.KeyEvent;
-import io.github.oshan96.openshooting.engine.GameLoop;
-import io.github.oshan96.openshooting.graphics.Graphics;
-import io.github.oshan96.openshooting.graphics.Renderer;
-import io.github.oshan96.openshooting.inputs.KeyEventListener;
-import io.github.oshan96.openshooting.resources.ImageResource;
-import io.github.oshan96.openshooting.world.World;
-import io.github.oshan96.openshooting.world.sprites.BasicGameObject;
-import io.github.oshan96.openshooting.world.sprites.fighters.AbstractFighter;
+import io.github.oshan96.openfighting.engine.GameLoop;
+import io.github.oshan96.openfighting.graphics.Graphics;
+import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.inputs.KeyEventListener;
+import io.github.oshan96.openfighting.resources.ImageResource;
+import io.github.oshan96.openfighting.world.World;
+import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
+import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
 
 /**
  * @author oshan

@@ -1,11 +1,11 @@
-package io.github.oshan96.openshooting.graphics;
+package io.github.oshan96.openfighting.graphics;
 
 import com.jogamp.newt.event.WindowAdapter;
 import com.jogamp.newt.event.WindowEvent;
 import com.jogamp.newt.opengl.GLWindow;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import io.github.oshan96.openshooting.inputs.KeyEventListener;
+import io.github.oshan96.openfighting.inputs.KeyEventListener;
 
 /**
  * @author oshan

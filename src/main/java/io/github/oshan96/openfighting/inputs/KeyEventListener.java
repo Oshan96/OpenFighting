@@ -1,4 +1,4 @@
-package io.github.oshan96.openshooting.inputs;
+package io.github.oshan96.openfighting.inputs;
 
 import com.jogamp.newt.event.KeyEvent;
 

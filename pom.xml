@@ -42,7 +42,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>io.github.oshan96.openshooting.engine.Main</mainClass>
+                            <mainClass>io.github.oshan96.openfighting.engine.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
