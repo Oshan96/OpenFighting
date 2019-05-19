@@ -17,8 +17,6 @@ public class EventListenerImpl implements GLEventListener {
     public static GL2 gl;
     public static Texture background = null;
 
-
-
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = glAutoDrawable.getGL().getGL2();
@@ -30,8 +28,8 @@ public class EventListenerImpl implements GLEventListener {
         background = new ImageResource("/images/background/street.png").getTexture();
         Graphics.createObjectTexture(background,0,0,Renderer.tileSize,Renderer.vTileSize);
 
-        FighterKree playerOne = new FighterKree(0,-5.25f,64,64, 0, 0);
-        FighterBee playerTwo = new FighterBee(-2.5f,-5.25f,64,64, 0, 0);
+        FighterKree playerOne = new FighterKree(0,-4.7f,64,64, 0, 0);
+        FighterBee playerTwo = new FighterBee(-2.5f,-4.7f,64,64, 0, 0);
         World.addGameObject(playerOne);
         World.addGameObject(playerTwo);
     }

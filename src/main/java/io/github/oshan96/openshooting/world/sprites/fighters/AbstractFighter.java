@@ -18,8 +18,8 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     protected float attackSpeed = 1.0f;
     protected boolean isFacingLeft = true;
 
-    protected float charHeight = 3.5f;
-    protected float charWidth = 3.5f;
+    protected final float charHeight = 4.5f;
+    protected final float charWidth = 4.5f;
 
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
