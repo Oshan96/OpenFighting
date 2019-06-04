@@ -65,5 +65,8 @@ public abstract class BasicGameObject implements Collidable {
 
     public abstract void render();
 
+    @Override
+    public void collided() {
 
+    }
 }
