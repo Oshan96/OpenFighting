@@ -72,11 +72,11 @@ public class GameLoop extends Thread {
     }
 
     public void setFPS(int fps_cap) {
-        this.fps_cap = fps_cap;
+        GameLoop.fps_cap = fps_cap;
     }
 
     public int getFPS() {
-        return this.fps_cap;
+        return GameLoop.fps_cap;
     }
 
     public static float getDelta() {
