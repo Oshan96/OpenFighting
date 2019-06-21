@@ -8,10 +8,10 @@ import java.util.ArrayList;
  */
 public class CollisionDetector {
 
-    private List<Collidable> collidables = new ArrayList();
+    private List<Collidable> collidables = new ArrayList<>();
 
     public void detectCollisions() {
-        for(Collidable col : collidables) {
+        for (Collidable col : collidables) {
             col.collided();
         }
     }
@@ -23,5 +23,5 @@ public class CollisionDetector {
     public void removeCollidable(Collidable collidable) {
         collidables.remove(collidable);
     }
-    
+
 }
