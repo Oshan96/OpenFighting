@@ -3,7 +3,11 @@ package io.github.oshan96.openfighting.world;
 import io.github.oshan96.openfighting.graphics.EventListenerImpl;
 import io.github.oshan96.openfighting.graphics.Graphics;
 import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.physics.Collidable;
+import io.github.oshan96.openfighting.physics.CollisionDetector;
 import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
+import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterBee;
+import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterKree;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -14,9 +18,16 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class World {
 
     private static List<BasicGameObject> gameObjects = null;
+    private static CollisionDetector collisionDetector = null;
 
     static {
         gameObjects = new CopyOnWriteArrayList<>();
+        collisionDetector = new CollisionDetector();
+
+        FighterKree playerOne = new FighterKree(0,-4.7f,64,64, 0, 0);
+        FighterBee playerTwo = new FighterBee(2.5f,-4.7f,64,64, 0, 0);
+        World.addGameObject(playerOne);
+        World.addGameObject(playerTwo);
     }
 
     /**
@@ -31,9 +42,16 @@ public class World {
      * calls the "render()" method of all game-objects
      */
     public static void render() {
-        Graphics.createObjectTexture(EventListenerImpl.background,0,0,Renderer.tileSize ,Renderer.vTileSize);
+        Graphics.createObjectTexture(EventListenerImpl.background,0,0,Renderer.tileSize ,Renderer.vTileSize,0);
         for(BasicGameObject object : gameObjects)
             object.render();
+    }
+
+    /**
+     * calls "collided()" method of all collidable game-objects
+     */
+    public static void detectCollision() {
+        collisionDetector.detectCollisions();
     }
 
     /**
@@ -43,6 +61,9 @@ public class World {
      */
     public static void addGameObject(BasicGameObject gameObject) {
         gameObjects.add(gameObject);
+        if(gameObject instanceof Collidable) {
+            collisionDetector.addCollidable(gameObject);
+        }
     }
 
     /**
@@ -52,5 +73,6 @@ public class World {
      */
     public static void removeGameObject(BasicGameObject gameObject) {
         gameObjects.remove(gameObject);
+        collisionDetector.removeCollidable(gameObject);
     }
 }

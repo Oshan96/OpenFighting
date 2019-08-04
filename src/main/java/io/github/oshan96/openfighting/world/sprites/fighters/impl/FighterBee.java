@@ -71,7 +71,7 @@ public class FighterBee extends AbstractFighter {
         if(KeyEventListener.isRegisteredKey(KeyEvent.VK_F)) {
 
             //test
-            BasicGameObject power = new BasicGameObject(x+1f,y,16,16) {
+            BasicGameObject power = new BasicGameObject(x-1f,y,16,16) {
                 float movementSpeed = 6;
                 {
                     currentTexture = powerTexture;
@@ -79,16 +79,16 @@ public class FighterBee extends AbstractFighter {
                 @Override
                 public void update() {
                     float xIn = 0;
-                    x+= ++xIn * movementSpeed * GameLoop.getDelta();
+                    x+= --xIn * movementSpeed * GameLoop.getDelta();
 
-                    if(x>Renderer.tileSize / 2 - 0.5f){
+                    if(x< -(Renderer.tileSize / 2 + 0.5f)){
                         World.removeGameObject(this);
                     }
                 }
 
                 @Override
                 public void render() {
-                    Graphics.createObjectTexture(currentTexture,x,y,0.8f,0.8f);
+                    Graphics.createObjectTexture(currentTexture,x,y,0.8f,0.8f,180);
                 }
             };
             World.addGameObject(power);
@@ -102,7 +102,7 @@ public class FighterBee extends AbstractFighter {
     @Override
     public void render() {
         animations.get("test").play();
-        Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight);
+        Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight,180);
     }
 
     @Override

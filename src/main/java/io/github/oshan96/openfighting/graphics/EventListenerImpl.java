@@ -6,8 +6,6 @@ import com.jogamp.opengl.GLEventListener;
 import com.jogamp.opengl.util.texture.Texture;
 import io.github.oshan96.openfighting.resources.ImageResource;
 import io.github.oshan96.openfighting.world.World;
-import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterBee;
-import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterKree;
 
 /**
  * @author oshan
@@ -20,18 +18,10 @@ public class EventListenerImpl implements GLEventListener {
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
         gl = glAutoDrawable.getGL().getGL2();
-        gl.glClearColor(0,0,0,1);       //use black when the screen is cleared
-        gl.glEnable(GL2.GL_TEXTURE_2D);
-        gl.glEnable(GL2.GL_BLEND);
-        gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
+        gl.glClearColor(0,0,0,1);
 
         background = new ImageResource("/images/background/street.png").getTexture();
-        Graphics.createObjectTexture(background,0,0,Renderer.tileSize,Renderer.vTileSize);
-
-        FighterKree playerOne = new FighterKree(0,-4.7f,64,64, 0, 0);
-        FighterBee playerTwo = new FighterBee(-2.5f,-4.7f,64,64, 0, 0);
-        World.addGameObject(playerOne);
-        World.addGameObject(playerTwo);
+        Graphics.createObjectTexture(background,0,0,Renderer.tileSize,Renderer.vTileSize,0);
     }
 
     @Override
@@ -41,7 +31,6 @@ public class EventListenerImpl implements GLEventListener {
 
     @Override
     public void display(GLAutoDrawable glAutoDrawable) {
-//        gl.glEnable(GL2.GL_TEXTURE_2D);
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);        //clear the color buffer
 

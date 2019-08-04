@@ -18,8 +18,8 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     protected float attackSpeed = 1.0f;
     protected boolean isFacingLeft = true;
 
-    protected final float charHeight = 4.5f;
-    protected final float charWidth = 4.5f;
+    protected final float charHeight = 4.0f;
+    protected final float charWidth = 4.0f;
 
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
@@ -130,6 +130,16 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
             x = Renderer.tileSize / 2 - 0.5f;
         } else if(x<-Renderer.tileSize / 2 + 0.5f) {
             x = -Renderer.tileSize / 2 + 0.5f;
+        }
+    }
+
+    @Override
+    public void collided() {
+        super.collided();
+        if(x<-(Renderer.tileSize / 2 + 0.5f)) {
+            x = (Renderer.tileSize / 2 + 0.5f);
+        } else if (x> (Renderer.tileSize / 2 - 0.5f)) {
+            x = (Renderer.tileSize / 2 - 0.5f);
         }
     }
 }

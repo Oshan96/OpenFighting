@@ -42,6 +42,9 @@ public class GameLoop extends Thread {
                     break;
                 }
                 lastUpdateTime += targetTime;
+
+                //detect collisions
+                World.detectCollision();
             }
 
             //render

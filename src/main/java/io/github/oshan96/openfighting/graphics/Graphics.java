@@ -8,15 +8,20 @@ import com.jogamp.opengl.util.texture.Texture;
  */
 public class Graphics {
 
-    public static void createObjectTexture(Texture tex, float x, float y, float width, float height) {
+    public static void createObjectTexture(Texture tex, float x, float y, float width, float height, float rotation) {
         GL2 gl = EventListenerImpl.gl;
 
+        gl.glEnable(GL2.GL_TEXTURE_2D);
+        gl.glEnable(GL2.GL_BLEND);
+        gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 
         if (tex != null) {
             gl.glBindTexture(GL2.GL_TEXTURE_2D, tex.getTextureObject());
         }
 
         gl.glTranslatef(x, y, 0);
+        if(rotation!=0)
+            gl.glRotatef(-rotation,0,1,0);
 
         gl.glColor4f(1, 1, 1, 1);
 
@@ -34,8 +39,13 @@ public class Graphics {
         gl.glVertex2f(-width/2 , height/2 );
         gl.glEnd();
 
+        gl.glDisable(GL2.GL_TEXTURE_2D);
+        gl.glDisable(GL2.GL_BLEND);
+
         gl.glFlush();
 
+        if(rotation!=0)
+            gl.glRotatef(rotation,0,1,0);
         gl.glTranslatef(-x, -y, 0);
 
     }

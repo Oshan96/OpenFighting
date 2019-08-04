@@ -88,7 +88,7 @@ public class FighterKree extends AbstractFighter {
 
                 @Override
                 public void render() {
-                    Graphics.createObjectTexture(currentTexture,x,y,0.7f,0.8f);
+                    Graphics.createObjectTexture(currentTexture,x,y,0.7f,0.8f,0);
                 }
             };
             World.addGameObject(power);
@@ -103,7 +103,7 @@ public class FighterKree extends AbstractFighter {
     @Override
     public void render() {
         animations.get("test").play();
-        Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight);
+        Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight,0);
     }
 
 
