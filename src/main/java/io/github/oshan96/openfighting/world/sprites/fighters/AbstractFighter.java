@@ -16,6 +16,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     protected float movementSpeed = 2.0f;
     protected float attackSpeed = 1.0f;
+    protected int health = 100;
     protected long lastPowerTime = 0;
 
     protected boolean isFacingLeft = true;
@@ -110,6 +111,11 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     }
 
     @Override
+    public int getHealth() {
+        return health;
+    }
+
+    @Override
     public void move(boolean isMovingRight) {
         float xIn = 0;
         if(isFacingLeft) {
@@ -151,4 +157,5 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
             y = -Renderer.vTileSize / 2 + 2.8f;
         }
     }
+
 }

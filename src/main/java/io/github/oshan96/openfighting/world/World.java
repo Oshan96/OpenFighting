@@ -6,6 +6,8 @@ import io.github.oshan96.openfighting.graphics.Renderer;
 import io.github.oshan96.openfighting.physics.Collidable;
 import io.github.oshan96.openfighting.physics.CollisionDetector;
 import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
+import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
+import io.github.oshan96.openfighting.world.sprites.fighters.Fighter;
 import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterBee;
 import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterKree;
 
@@ -20,14 +22,21 @@ public class World {
     private static List<BasicGameObject> gameObjects = null;
     private static CollisionDetector collisionDetector = null;
 
+    private static Fighter playerOne = null;
+    private static Fighter playerTwo = null;
+
     static {
         gameObjects = new CopyOnWriteArrayList<>();
         collisionDetector = new CollisionDetector();
 
-        FighterKree playerOne = new FighterKree(-2.5f,-4.7f,64,64, 0, 0);
-        FighterBee playerTwo = new FighterBee(2.5f,-4.7f,64,64, 0, 0);
-        World.addGameObject(playerOne);
-        World.addGameObject(playerTwo);
+        FighterKree p1 = new FighterKree(-2.5f,-4.7f,64,64, 0, 0);
+        FighterBee p2 = new FighterBee(2.5f,-4.7f,64,64, 0, 0);
+
+        playerOne = p1;
+        playerTwo = p2;
+
+        World.addGameObject(p1);
+        World.addGameObject(p2);
     }
 
     /**
@@ -74,5 +83,13 @@ public class World {
     public static void removeGameObject(BasicGameObject gameObject) {
         gameObjects.remove(gameObject);
         collisionDetector.removeCollidable(gameObject);
+    }
+
+    public static Fighter getPlayerOne() {
+        return playerOne;
+    }
+
+    public static Fighter getPlayerTwo() {
+        return playerTwo;
     }
 }

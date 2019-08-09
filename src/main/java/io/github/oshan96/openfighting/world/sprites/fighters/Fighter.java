@@ -14,4 +14,5 @@ public interface Fighter {
     void crouch();
     void move(boolean isMovingRight);
 
+    int getHealth();
 }
