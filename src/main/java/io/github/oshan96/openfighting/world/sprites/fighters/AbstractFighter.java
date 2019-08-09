@@ -141,5 +141,12 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         } else if (x> (Renderer.tileSize / 2 - 0.5f)) {
             x = (Renderer.tileSize / 2 - 0.5f);
         }
+
+        if(y< -(Renderer.vTileSize)/2 + 1.5f) {
+            y = -Renderer.vTileSize / 2 + 1.5f;
+        }
+        else if (y > - (Renderer.vTileSize)/2 + 2.8f) {
+            y = -Renderer.vTileSize / 2 + 2.8f;
+        }
     }
 }

@@ -7,8 +7,8 @@ import io.github.oshan96.openfighting.graphics.Renderer;
 import io.github.oshan96.openfighting.inputs.KeyEventListener;
 import io.github.oshan96.openfighting.resources.ImageResource;
 import io.github.oshan96.openfighting.world.World;
-import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
 import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
+import io.github.oshan96.openfighting.world.sprites.fighters.power.impl.PowerupKree;
 
 /**
  * @author oshan
@@ -39,15 +39,15 @@ public class FighterKree extends AbstractFighter {
     public void update() {
         float yIn = 0;
         //testing code
-        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_RIGHT)) {
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_D)) {
             move(true);
         }
 
-        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_LEFT)) {
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_A)) {
             move(false);
         }
 
-        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_UP)) {
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_W)) {
 
             y += ++yIn * movementSpeed * GameLoop.getDelta();
 
@@ -58,7 +58,7 @@ public class FighterKree extends AbstractFighter {
             }
         }
 
-        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_DOWN)) {
+        if (KeyEventListener.isRegisteredKey(KeyEvent.VK_S)) {
             y += --yIn * movementSpeed * GameLoop.getDelta();
 
             if(y>Renderer.tileSize / 2 - 0.5f) {
@@ -68,31 +68,11 @@ public class FighterKree extends AbstractFighter {
             }
         }
 
-        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_ENTER)) {
+        if(KeyEventListener.isRegisteredKey(KeyEvent.VK_F)) {
 
-            //test
-            BasicGameObject power = new BasicGameObject(x+1f,y,16,16) {
-                float movementSpeed = 6;
-                {
-                    currentTexture = powerTexture;
-                }
-                @Override
-                public void update() {
-                    float xIn = 0;
-                    x+= ++xIn * movementSpeed * GameLoop.getDelta();
-
-                    if(x>Renderer.tileSize / 2 - 0.5f){
-                        World.removeGameObject(this);
-                    }
-                }
-
-                @Override
-                public void render() {
-                    Graphics.createObjectTexture(currentTexture,x,y,0.7f,0.8f,0);
-                }
-            };
+            PowerupKree power = new PowerupKree(x+1f,y,16,16, powerTexture);
             World.addGameObject(power);
-            ////
+
         }
 
     }
