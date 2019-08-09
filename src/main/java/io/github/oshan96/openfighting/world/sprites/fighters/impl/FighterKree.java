@@ -10,6 +10,7 @@ import io.github.oshan96.openfighting.world.World;
 import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
 import io.github.oshan96.openfighting.world.sprites.fighters.power.impl.PowerupKree;
 
+
 /**
  * @author oshan
  */

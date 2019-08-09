@@ -24,7 +24,7 @@ public class World {
         gameObjects = new CopyOnWriteArrayList<>();
         collisionDetector = new CollisionDetector();
 
-        FighterKree playerOne = new FighterKree(0,-4.7f,64,64, 0, 0);
+        FighterKree playerOne = new FighterKree(-2.5f,-4.7f,64,64, 0, 0);
         FighterBee playerTwo = new FighterBee(2.5f,-4.7f,64,64, 0, 0);
         World.addGameObject(playerOne);
         World.addGameObject(playerTwo);
