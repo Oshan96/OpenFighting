@@ -69,10 +69,14 @@ public class FighterKree extends AbstractFighter {
         }
 
         if(KeyEventListener.isRegisteredKey(KeyEvent.VK_F)) {
+            long currentTime = System.nanoTime();
 
-            PowerupKree power = new PowerupKree(x+1f,y,16,16, powerTexture);
-            World.addGameObject(power);
+            if(currentTime - lastPowerTime > 500000000) {
+                PowerupKree power = new PowerupKree(x+1f,y,16,16, powerTexture);
+                World.addGameObject(power);
 
+                lastPowerTime = currentTime;
+            }
         }
 
     }

@@ -69,11 +69,15 @@ public class FighterBee extends AbstractFighter {
         }
 
         if(KeyEventListener.isRegisteredKey(KeyEvent.VK_ENTER)) {
+            long currentTime = System.nanoTime();
 
-            PowerupBee power = new PowerupBee(x-1f,y,16,16, powerTexture);
-            World.addGameObject(power);
-
+            if(currentTime - lastPowerTime > 500000000) {
+                PowerupBee power = new PowerupBee(x - 1f, y, 16, 16, powerTexture);
+                World.addGameObject(power);
+                lastPowerTime = currentTime;
+            }
         }
+
     }
 
     /**
