@@ -49,7 +49,9 @@ public class EventListenerImpl implements GLEventListener {
         gl = glAutoDrawable.getGL().getGL2();
         gl.glClear(GL2.GL_COLOR_BUFFER_BIT);        //clear the color buffer
 
-        World.render();
+        World.render(); //render game objects in world
+
+        //render text
         textRenderer.beginRendering(Renderer.getWindowWidth(),Renderer.getWindowHeight());
         textRenderer.setColor(Color.ORANGE);
         textRenderer.draw("KREE : " + World.getPlayerOne().getHealth(),20,Renderer.getWindowHeight() - 70);

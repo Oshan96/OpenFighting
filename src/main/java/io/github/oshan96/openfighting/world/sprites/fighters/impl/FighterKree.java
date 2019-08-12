@@ -74,6 +74,7 @@ public class FighterKree extends AbstractFighter {
 
             if(currentTime - lastPowerTime > 500000000) {
                 PowerupKree power = new PowerupKree(x+1f,y,16,16, powerTexture);
+                power.setEnemy((AbstractFighter) World.getPlayerTwo()); //set enemy to Bee
                 World.addGameObject(power);
 
                 lastPowerTime = currentTime;
@@ -127,4 +128,8 @@ public class FighterKree extends AbstractFighter {
 
     }
 
+    @Override
+    public String toString() {
+        return "FighterKree";
+    }
 }

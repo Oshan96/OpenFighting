@@ -15,4 +15,5 @@ public interface Fighter {
     void move(boolean isMovingRight);
 
     int getHealth();
+
 }

@@ -110,6 +110,10 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         this.attackSpeed = attackSpeed;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     @Override
     public int getHealth() {
         return health;

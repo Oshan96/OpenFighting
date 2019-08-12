@@ -26,7 +26,7 @@ public class PowerupBee extends AbstractPowerup {
         float xIn = 0;
         x+= --xIn * movementSpeed * GameLoop.getDelta();
 
-        if(x< -(Renderer.tileSize / 2 + 0.5f)){
+        if(tookHit || x < -(Renderer.tileSize / 2 + 0.5f)){
             World.removeGameObject(this);
         }
     }
@@ -34,5 +34,10 @@ public class PowerupBee extends AbstractPowerup {
     @Override
     public void render() {
         Graphics.createObjectTexture(currentTexture,x,y,0.8f,0.8f,180);
+    }
+
+    @Override
+    public String toString() {
+        return "PowerupBee";
     }
 }
