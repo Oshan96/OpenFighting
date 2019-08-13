@@ -1,6 +1,8 @@
 package io.github.oshan96.openfighting.world.sprites.fighters.power;
 
 import io.github.oshan96.openfighting.graphics.Renderer;
+import io.github.oshan96.openfighting.inputs.KeyEventListener;
+import io.github.oshan96.openfighting.world.World;
 import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
 import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
 
@@ -11,6 +13,7 @@ public abstract class AbstractPowerup extends BasicGameObject {
 
     protected float movementSpeed = 6;
     protected AbstractFighter enemy = null;
+    protected AbstractFighter owner = null;
     protected boolean tookHit = false;
 
     public AbstractPowerup(float x, float y, int width, int height) {
@@ -25,13 +28,21 @@ public abstract class AbstractPowerup extends BasicGameObject {
         this.enemy = enemy;
     }
 
+    public void setOwner(AbstractFighter owner) {
+        this.owner = owner;
+    }
+
     @Override
     public void collided() {
         if(this.x > enemy.getX() - 1 && this.x < enemy.getX() + 1 && this.y == enemy.getY()) {
             enemy.setHealth(enemy.getHealth() - 10);
             tookHit = true;
+            if(enemy.getHealth() <= 0) {
+                World.setWinner(owner);
+                KeyEventListener.clearKeys();
+                Renderer.getGLWindow().removeKeyListener(Renderer.getGLWindow().getKeyListener(0));
+            }
         }
     }
-
 
 }

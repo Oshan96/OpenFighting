@@ -59,4 +59,8 @@ public class Renderer {
         return window.getHeight();
     }
 
+    public static GLWindow getGLWindow() {
+        return window;
+    }
+
 }

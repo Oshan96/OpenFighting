@@ -6,7 +6,6 @@ import io.github.oshan96.openfighting.graphics.Renderer;
 import io.github.oshan96.openfighting.physics.Collidable;
 import io.github.oshan96.openfighting.physics.CollisionDetector;
 import io.github.oshan96.openfighting.world.sprites.BasicGameObject;
-import io.github.oshan96.openfighting.world.sprites.fighters.AbstractFighter;
 import io.github.oshan96.openfighting.world.sprites.fighters.Fighter;
 import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterBee;
 import io.github.oshan96.openfighting.world.sprites.fighters.impl.FighterKree;
@@ -24,6 +23,8 @@ public class World {
 
     private static Fighter playerOne = null;
     private static Fighter playerTwo = null;
+
+    private static Fighter winner = null;
 
     static {
         gameObjects = new CopyOnWriteArrayList<>();
@@ -60,6 +61,9 @@ public class World {
      * calls "collided()" method of all collidable game-objects
      */
     public static void detectCollision() {
+        if(winner != null) {
+            return;
+        }
         collisionDetector.detectCollisions();
     }
 
@@ -83,6 +87,14 @@ public class World {
     public static void removeGameObject(BasicGameObject gameObject) {
         gameObjects.remove(gameObject);
         collisionDetector.removeCollidable(gameObject);
+    }
+
+    public static void setWinner(Fighter fighter) {
+        winner = fighter;
+    }
+
+    public static Fighter getWinner() {
+        return winner;
     }
 
     public static Fighter getPlayerOne() {

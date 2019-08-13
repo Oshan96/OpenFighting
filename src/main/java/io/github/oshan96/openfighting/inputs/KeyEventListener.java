@@ -25,4 +25,8 @@ public class KeyEventListener implements com.jogamp.newt.event.KeyListener {
     public static boolean isRegisteredKey(short keyCode) {
         return registeredKeys.contains(keyCode);
     }
+
+    public static void clearKeys() {
+        registeredKeys.clear();
+    }
 }

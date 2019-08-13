@@ -19,7 +19,8 @@ public class EventListenerImpl implements GLEventListener {
     public static GL2 gl;
     public static Texture background = null;
 
-    TextRenderer textRenderer;
+    private TextRenderer textRenderer;
+    private TextRenderer winText;
 
     @Override
     public void init(GLAutoDrawable glAutoDrawable) {
@@ -33,6 +34,10 @@ public class EventListenerImpl implements GLEventListener {
             InputStream in = getClass().getResourceAsStream("/fonts/pixel_font.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT,in).deriveFont(52f).deriveFont(Font.PLAIN);
             textRenderer = new TextRenderer(font);
+
+            InputStream in2 = getClass().getResourceAsStream("/fonts/pixel_font.ttf");
+            Font font2 = Font.createFont(Font.TRUETYPE_FONT,in2).deriveFont(80f).deriveFont(Font.PLAIN);
+            winText = new TextRenderer(font2);
         } catch (Exception ex) {
             System.out.println("Font failed to load");
         }
@@ -57,6 +62,13 @@ public class EventListenerImpl implements GLEventListener {
         textRenderer.draw("KREE : " + World.getPlayerOne().getHealth(),20,Renderer.getWindowHeight() - 70);
         textRenderer.draw("BEE : " + World.getPlayerTwo().getHealth(),Renderer.getWindowWidth() - 200,Renderer.getWindowHeight() - 70);
         textRenderer.endRendering();
+
+        if(World.getWinner() != null) {
+            winText.beginRendering(Renderer.getWindowWidth(),Renderer.getWindowHeight());
+            winText.setColor(Color.ORANGE);
+            winText.draw(World.getWinner().toString() + " WINS!", Renderer.getWindowWidth()/2 - 230, Renderer.getWindowHeight()/2);
+            winText.endRendering();
+        }
     }
 
     @Override
