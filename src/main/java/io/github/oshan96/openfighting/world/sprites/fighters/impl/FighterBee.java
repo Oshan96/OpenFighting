@@ -30,6 +30,7 @@ public class FighterBee extends AbstractFighter {
     public FighterBee(float x, float y, int width, int height, int offsetX, int offsetY) {
         super(x, y, width, height, "bee", offsetX, offsetY);
         powerTexture = new ImageResource().setImage("/images/powers/bee_power.png").getTexture();
+        powerHitTexture = new ImageResource().setImage("/images/powers/bee_hit_power.png").getTexture();
     }
 
     /**

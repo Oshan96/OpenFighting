@@ -29,6 +29,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     protected List<Texture> sprites = null;
     protected Texture initialStance = null;
     protected Texture powerTexture = null;
+    protected Texture powerHitTexture = null;
 
     protected Map<String,Animation> animations = null;
 
@@ -135,6 +136,14 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         if(isDefeated) {
             this.currentAnimation = animations.get("defeat");
         }
+    }
+
+    public Texture getPowerHitTexture() {
+        return powerHitTexture;
+    }
+
+    public void setPowerHitTexture(Texture powerHitTexture) {
+        this.powerHitTexture = powerHitTexture;
     }
 
     public boolean isDefeated() {
