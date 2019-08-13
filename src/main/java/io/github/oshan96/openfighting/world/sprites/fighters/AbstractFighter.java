@@ -21,6 +21,8 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     protected boolean isFacingLeft = true;
 
+    protected boolean isDefeated = false;
+
     protected final float charHeight = 4.0f;
     protected final float charWidth = 4.0f;
 
@@ -84,6 +86,20 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         animations.put("test",testAnime);
         currentAnimation = testAnime;
         /////////////////
+
+        //defeated animation
+        Animation defeatAnime = new Animation();
+        List<Texture> defTextures = SpriteSheet
+                .getInstance()
+                .loadSpriteSheet("/images/sprites/"+name+"/defeat/defeat_state_"+name+"_sheet.png")
+                .getSprites(width,height,offsetX,offsetY,1,5);
+
+        defeatAnime.setSprites(defTextures);
+        defeatAnime.setFps(20);
+
+        animations.put("defeat",defeatAnime);
+        /////
+
     }
 
     public float getMovementSpeed() {
@@ -112,6 +128,17 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public void setDefeated(boolean defeat) {
+        isDefeated = defeat;
+        if(isDefeated) {
+            this.currentAnimation = animations.get("defeat");
+        }
+    }
+
+    public boolean isDefeated() {
+        return isDefeated;
     }
 
     @Override

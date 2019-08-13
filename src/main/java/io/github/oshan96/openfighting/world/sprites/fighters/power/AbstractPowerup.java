@@ -39,6 +39,7 @@ public abstract class AbstractPowerup extends BasicGameObject {
             tookHit = true;
             if(enemy.getHealth() <= 0) {
                 World.setWinner(owner);
+                enemy.setDefeated(true);
                 KeyEventListener.clearKeys();
                 Renderer.getGLWindow().removeKeyListener(Renderer.getGLWindow().getKeyListener(0));
             }
