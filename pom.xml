@@ -6,7 +6,7 @@
 
     <groupId>io.github.oshan96</groupId>
     <artifactId>open-fighting</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
