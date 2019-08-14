@@ -90,11 +90,7 @@ public class FighterKree extends AbstractFighter {
      */
     @Override
     public void render() {
-        if(isDefeated) {
-            animations.get("defeat").play();
-        }else {
-            animations.get("test").play();
-        }
+        currentAnimation.play();
         Graphics.createObjectTexture(currentAnimation.getCurrentImage(),x,y,charWidth,charHeight,0);
     }
 
