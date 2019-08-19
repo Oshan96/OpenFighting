@@ -34,7 +34,7 @@ public abstract class AbstractPowerup extends BasicGameObject {
 
     @Override
     public void collided() {
-        if(this.x > enemy.getX() - 1 && this.x < enemy.getX() + 1 && this.y == enemy.getY()) {
+        if(this.x > enemy.getX() - 1 && this.x < enemy.getX() + 1 && this.y > enemy.getY()-0.4f && this.y < enemy.getY() + 0.4f) {
             enemy.setHealth(enemy.getHealth() - 10);
             this.currentTexture = owner.getPowerHitTexture();
             tookHit = true;
