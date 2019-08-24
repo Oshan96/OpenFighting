@@ -73,6 +73,7 @@ public class FighterBee extends AbstractFighter {
             long currentTime = System.nanoTime();
 
             if(currentTime - lastPowerTime > 500000000) {
+                currentAnimation = animations.get("shoot");
                 PowerupBee power = new PowerupBee(x - 1f, y, 16, 16, powerTexture);
                 power.setOwner(this);
                 power.setEnemy((AbstractFighter) World.getPlayerOne()); //set enemy to Kree

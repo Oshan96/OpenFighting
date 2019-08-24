@@ -21,15 +21,24 @@ public class ActionAnimation extends Animation {
         this.registeredFighter = registeredFighter;
     }
 
+    public ActionAnimation() {
+        currentFrame = 2;
+    }
+
+    public void setRegisteredFighter(AbstractFighter registeredFighter) {
+        this.registeredFighter = registeredFighter;
+    }
+
     @Override
     public void play() {
         long currentTime = System.nanoTime();
 
-        if(currentTime > lastFrameTime + (1000000000/(this.getSprites().size() * registeredFighter.getAttackSpeed()))) {
+        if(currentTime > lastFrameTime + (1000000000/(getFps()))) {
             currentFrame++;
 
             if(currentFrame >= sprites.size()) {
-                return;
+                currentFrame = 0;
+                registeredFighter.setCurrentAnimation(registeredFighter.getAnimations().get("idle"));
             }
 
             lastFrameTime = currentTime;

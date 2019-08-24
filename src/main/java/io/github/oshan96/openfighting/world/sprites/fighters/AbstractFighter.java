@@ -2,6 +2,7 @@ package io.github.oshan96.openfighting.world.sprites.fighters;
 
 import com.jogamp.opengl.util.texture.Texture;
 import io.github.oshan96.openfighting.engine.GameLoop;
+import io.github.oshan96.openfighting.graphics.ActionAnimation;
 import io.github.oshan96.openfighting.graphics.Animation;
 import io.github.oshan96.openfighting.graphics.Renderer;
 import io.github.oshan96.openfighting.resources.SpriteSheet;
@@ -84,7 +85,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         testAnime.setSprites(textures);
         testAnime.setFps(20);
 
-        animations.put("test",testAnime);
+        animations.put("idle",testAnime);
         currentAnimation = testAnime;
         /////////////////
 
@@ -99,6 +100,34 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         defeatAnime.setFps(20);
 
         animations.put("defeat",defeatAnime);
+        /////
+
+        //shooting animation
+        Animation shootingAnime = new ActionAnimation();
+        List<Texture> shootTextures = SpriteSheet
+                .getInstance()
+                .loadSpriteSheet("/images/sprites/"+name+"/shoot/shoot_state_"+name+"_sheet.png")
+                .getSprites(width,height,offsetX,offsetY,1,5);
+
+        shootingAnime.setSprites(shootTextures);
+        shootingAnime.setFps(16);
+        ((ActionAnimation) shootingAnime).setRegisteredFighter(this);
+
+        animations.put("shoot",shootingAnime);
+        /////
+
+        //hit animation
+        Animation hitAnime = new ActionAnimation();
+        List<Texture> hitTextures = SpriteSheet
+                .getInstance()
+                .loadSpriteSheet("/images/sprites/"+name+"/hit/hit_state_"+name+"_sheet.png")
+                .getSprites(width,height,offsetX,offsetY,1,5);
+
+        hitAnime.setSprites(hitTextures);
+        hitAnime.setFps(10);
+        ((ActionAnimation) hitAnime).setRegisteredFighter(this);
+
+        animations.put("hit",hitAnime);
         /////
 
     }
@@ -144,6 +173,14 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
 
     public void setPowerHitTexture(Texture powerHitTexture) {
         this.powerHitTexture = powerHitTexture;
+    }
+
+    public void setCurrentAnimation(Animation currentAnimation) {
+        this.currentAnimation = currentAnimation;
+    }
+
+    public Map<String, Animation> getAnimations() {
+        return animations;
     }
 
     public boolean isDefeated() {
