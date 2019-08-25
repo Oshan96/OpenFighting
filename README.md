@@ -68,7 +68,7 @@ Following is a demonstration of a live gameplay of OpenFighting
 
 |Resource|Type|Author|License|
 |---|---|---|---|
-|[Cyberpunk background](https://ansimuz.itch.io/cyberpunk-street-environmen) | Texture (background) | [ansimuz](https://ansimuz.itch.io/)| Free|
+|[Cyberpunk background](https://ansimuz.itch.io/cyberpunk-street-environment) | Texture (background) | [ansimuz](https://ansimuz.itch.io/)| Free|
 |[Kree](https://assetbakery.itch.io/2d-fighter-3) |Spritesheet | [Asset Bakery](https://assetbakery.itch.io)| Free |
 |[Bee](https://assetbakery.itch.io/2d-fighter-4) | Spritesheet| [Asset Bakery](https://assetbakery.itch.io)| Free |
 | [Joystick Font](https://fontmeme.com/fonts/joystix-font/) | Font | [Typodermic Fonts](http://www.typodermicfonts.com/) | Free |
