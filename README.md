@@ -52,6 +52,7 @@ For the two players, the currently mapped keys are as following :
 |Move Down | S | Down arrow|
 |Move Front | D | Left arrow|
 |Move Back | A | Right arrow|
+|Special Power | F | Enter |
 
 ## Gameplay
 
