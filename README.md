@@ -34,7 +34,7 @@ Open Fighting is built using Maven framework to automate dependency management. 
 
 1. Navigate to “target” directory and double click on the “open-fighting-1.0-jar-withdependencies.jar” file to start the game or run the following command to execute the jar file through terminal :  
 ```java -jar open-fighting-1.0-jar-with-dependencies.jar ```
-2. Alternatively, download the executable jar file from releases and execute in the same manner or by just double clicking. 
+2. Alternatively, download the executable jar file from [releases](https://github.com/Oshan96/OpenFighting/releases) and execute in the same manner or by just double clicking. 
 
 ## How to play
 
