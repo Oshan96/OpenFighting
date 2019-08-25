@@ -8,7 +8,7 @@ There are currently 2 players designed for the game,
 |:---:|:----:|
 |![Kree](https://i.imgur.com/ZlhHFvd.png) | ![Bee](https://i.imgur.com/0L5O2hd.png) |
 
-The game will go on until either player gets his health to zer
+The game will go on until either player gets his health to zero
 
 ## Configurations
 
