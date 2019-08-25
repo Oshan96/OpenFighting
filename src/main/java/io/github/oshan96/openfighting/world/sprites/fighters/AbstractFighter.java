@@ -73,7 +73,7 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     private void initActions(String name, int offsetX, int offsetY) {
         animations = new HashMap<>();
 
-        //a test animation
+        //idle animation
         Animation testAnime = new Animation();
 
         //test animation idle-state
