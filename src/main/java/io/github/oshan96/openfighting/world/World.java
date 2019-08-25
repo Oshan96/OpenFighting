@@ -32,6 +32,10 @@ public class World {
 
         FighterKree p1 = new FighterKree(-2.5f,-4.7f,64,64, 0, 0);
         FighterBee p2 = new FighterBee(2.5f,-4.7f,64,64, 0, 0);
+        p1.setFacingLeft(false);
+
+        p1.setEnemy(p2);
+        p2.setEnemy(p1);
 
         playerOne = p1;
         playerTwo = p2;

@@ -20,6 +20,8 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
     protected int health = 100;
     protected long lastPowerTime = 0;
 
+    protected AbstractFighter enemy = null;
+
     protected boolean isFacingLeft = true;
 
     protected boolean isDefeated = false;
@@ -192,21 +194,22 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
         return health;
     }
 
+    public AbstractFighter getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(AbstractFighter enemy) {
+        this.enemy = enemy;
+    }
+
     @Override
     public void move(boolean isMovingRight) {
         float xIn = 0;
-        if(isFacingLeft) {
-            if(isMovingRight) {
-                xIn++;
-            } else {
-                xIn--;
-            }
+
+        if(isMovingRight) {
+            xIn++;
         } else {
-            if(isMovingRight) {
-                xIn++;
-            } else {
-                xIn--;
-            }
+            xIn--;
         }
 
         x += xIn * movementSpeed * GameLoop.getDelta();
@@ -225,6 +228,10 @@ public abstract class AbstractFighter extends BasicGameObject implements Fighter
             x = (Renderer.tileSize / 2 + 0.5f);
         } else if (x> (Renderer.tileSize / 2 - 0.5f)) {
             x = (Renderer.tileSize / 2 - 0.5f);
+        }else if((x+charWidth/3f) - (enemy.getX()) > 0 && !isFacingLeft ) {
+            x = enemy.getX()-enemy.charWidth/3;
+        }else if((x-charWidth/3f) - (enemy.getX()) < 0 && isFacingLeft ) {
+            x = enemy.getX()+enemy.charWidth/3;
         }
 
         if(y< -(Renderer.vTileSize)/2 + 1.5f) {
